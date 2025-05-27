@@ -1,0 +1,15 @@
+C:\Users\kidka\Documents\Káťa\kurz programování\C#2\C2-Knihovna\bin\Debug\net9.0\C2-Knihovna.exe
+C:\Users\kidka\Documents\Káťa\kurz programování\C#2\C2-Knihovna\bin\Debug\net9.0\C2-Knihovna.deps.json
+C:\Users\kidka\Documents\Káťa\kurz programování\C#2\C2-Knihovna\bin\Debug\net9.0\C2-Knihovna.runtimeconfig.json
+C:\Users\kidka\Documents\Káťa\kurz programování\C#2\C2-Knihovna\bin\Debug\net9.0\C2-Knihovna.dll
+C:\Users\kidka\Documents\Káťa\kurz programování\C#2\C2-Knihovna\bin\Debug\net9.0\C2-Knihovna.pdb
+C:\Users\kidka\Documents\Káťa\kurz programování\C#2\C2-Knihovna\obj\Debug\net9.0\C2-Knihovna.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kidka\Documents\Káťa\kurz programování\C#2\C2-Knihovna\obj\Debug\net9.0\C2-Knihovna.AssemblyInfoInputs.cache
+C:\Users\kidka\Documents\Káťa\kurz programování\C#2\C2-Knihovna\obj\Debug\net9.0\C2-Knihovna.AssemblyInfo.cs
+C:\Users\kidka\Documents\Káťa\kurz programování\C#2\C2-Knihovna\obj\Debug\net9.0\C2-Knihovna.csproj.CoreCompileInputs.cache
+C:\Users\kidka\Documents\Káťa\kurz programování\C#2\C2-Knihovna\obj\Debug\net9.0\C2-Knihovna.sourcelink.json
+C:\Users\kidka\Documents\Káťa\kurz programování\C#2\C2-Knihovna\obj\Debug\net9.0\C2-Knihovna.dll
+C:\Users\kidka\Documents\Káťa\kurz programování\C#2\C2-Knihovna\obj\Debug\net9.0\refint\C2-Knihovna.dll
+C:\Users\kidka\Documents\Káťa\kurz programování\C#2\C2-Knihovna\obj\Debug\net9.0\C2-Knihovna.pdb
+C:\Users\kidka\Documents\Káťa\kurz programování\C#2\C2-Knihovna\obj\Debug\net9.0\C2-Knihovna.genruntimeconfig.cache
+C:\Users\kidka\Documents\Káťa\kurz programování\C#2\C2-Knihovna\obj\Debug\net9.0\ref\C2-Knihovna.dll
