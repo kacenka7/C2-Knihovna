@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("C2-Knihovna")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4d8e7e74ba43ae28786d3bf857dddee9a5e3debe")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6e8ae9ed1d1235032f81653e446e04843dff48d9")]
 [assembly: System.Reflection.AssemblyProductAttribute("C2-Knihovna")]
 [assembly: System.Reflection.AssemblyTitleAttribute("C2-Knihovna")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -34,18 +34,57 @@ internal class Program
             Pages = pages;
         }
 
-        public Book(string vstup)
+        public Book(string[] vstup)
         {
-            string[] casti = vstup.Split(';');
-            Title = casti[0];
-            Author = casti[1];
-            PublishedDate = DateTime.Parse(casti[2]);
-            Pages = int.Parse(casti[3]);
+            try
+            {
+                if (vstup[0].Trim().Length > 0)
+                {
+                    Title = vstup[0].Trim();
+                }
+                else
+                {
+                    throw new ArgumentException("Název knihy je povinný.");
+                }
+
+                if (vstup[1].Trim().Length > 0)
+                {
+                    Author = vstup[1].Trim();
+                }
+                else
+                {
+                    throw new ArgumentException("Autor je povinný.");
+                }
+
+                if (DateTime.TryParse(vstup[2].Trim(), out DateTime datum))
+                {
+                    PublishedDate = datum;
+                }
+                else
+                {
+                    throw new ArgumentException("Neplatný formát datumu.");
+                }
+
+                if (int.TryParse(vstup[3].Trim(), out int stranky) && stranky > 0)
+                {
+                    Pages = stranky;
+                }
+                else
+                {
+                    throw new ArgumentException("Neplatný počet stran.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Chyba při vytváření knihy: " + ex.Message);
+                throw;
+            }
+
             
         }
         public void Kniha()
         {
-            Console.WriteLine($"Kniha:{Title}, Autor:{Author}, Rok Vydání: {PublishedDate}, Počet stran: {Pages}");
+            Console.WriteLine($"Název:{Title}, Autor:{Author}, Rok Vydání: {PublishedDate}, Počet stran: {Pages}");
         }
     }
     private static void Main(string[] args)
@@ -63,18 +102,72 @@ internal class Program
             string volba = Console.ReadLine();
             string[] rozdelene = volba.Split(';', 2);
             string akce = rozdelene[0].Trim().ToUpper();
+            
 
             switch (akce)
             {
                 case "ADD":
-                    Book novaKniha = new Book (rozdelene[1]);
-                    Console.WriteLine("Kniha byla zadána do knihovny.");
-                    knihovna.Add(novaKniha);
-                    novaKniha.Kniha();
+                    if (rozdelene.Length == 2)
+                    {
+                        string[] vstupKniha = rozdelene[1].Trim().Split(';');
+                        if (vstupKniha.LongLength == 4)
+                        {
+                            try
+                            {
+                                Book novaKniha = new Book(vstupKniha);
+                                knihovna.Add(novaKniha);
+                                Console.WriteLine("Kniha byla přidána do knihovny.");
+                                novaKniha.Kniha();
+                                
+                            }
+                            catch (ArgumentException ex)
+                            {
+                                Console.WriteLine("Kniha nebyla přidána: " + ex.Message);
+                            }
+                            catch (Exception)
+                            {
+                                Console.WriteLine("Kniha nebyla přidána kvůli neočekávané chybě.");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Nebyly zadány všechny údaje o knize.");
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Nebyly zadány údaje o knize.");
+                    }
+
                     break;
                 case "LIST":
+                    var serazeneKnihy = knihovna.OrderBy(k => k.PublishedDate);
+                    foreach (var k in serazeneKnihy)
+                    {
+                        k.Kniha();
+                    }
                     break;
                 case "STATS":
+                    var prumerStran = knihovna.Average(k =>k.Pages);
+                    Console.WriteLine($"Průměrný počet stran je: {prumerStran}");
+
+                    var seskupene = knihovna.GroupBy(k => k.Author);
+                    foreach (var skupina in seskupene)
+                    {
+                        foreach (var kniha in skupina)
+                        {
+                            Console.WriteLine($"  - {kniha.Title} ({kniha.PublishedDate.Year}, {kniha.Author})");
+                        }
+                    } 
+
+                    var unikatniSlova = knihovna
+                        .SelectMany(k => k.Title
+                            .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries))
+                        .Select(slovo => slovo.Trim(new[] { '.', ',', '!', '?', ':', ';', '-', '„', '“', '"' }))
+                        .Where(slovo => !string.IsNullOrWhiteSpace(slovo))
+                        .Select(slovo => slovo.ToLower())
+                        .Distinct();
+                        Console.WriteLine($"Počet unikátních slov v názvech knih: {unikatniSlova.Count()}");
                     break;
                 case "FIND":
                     break;
