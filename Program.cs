@@ -170,6 +170,27 @@ internal class Program
                         Console.WriteLine($"Počet unikátních slov v názvech knih: {unikatniSlova.Count()}");
                     break;
                 case "FIND":
+                    string klicoveSlovo = rozdelene[1].Trim().ToLower();
+                    if (klicoveSlovo.Length > 0)
+                    {
+                        var find = knihovna.Where(k => k.Title.ToLower().Contains(klicoveSlovo));
+                        if (find.Any ())
+                        {
+                            foreach (var k in find)
+                            {
+                                k.Kniha();
+                            }
+                        }
+                        else
+                        {
+                          Console.WriteLine("Nebyla nalezená shoda");  
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Nebylo zadáno klíčové slovo");
+                    }
+
                     break;
                 case "END":
                     Console.WriteLine("Program se ukončí");
